@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgt5bl1vbhmu"]
+
+[ext_resource type="Script" uid="uid://dg8tpc70gfgva" path="res://scripts/slime.gd" id="1_jhcl7"]
+[ext_resource type="Texture2D" uid="uid://kh4bxni4l43t" path="res://assets/brackeys_platformer_assets/sprites/slime_purple.png" id="2_dp2bf"]
+[ext_resource type="PackedScene" uid="uid://dtbloiovyv4d" path="res://scenes/kill_zone.tscn" id="3_8l41y"]
+[ext_resource type="PackedScene" uid="uid://swadflh6pu3r" path="res://scenes/enemy_kill_zone.tscn" id="4_dp2bf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys1d1"]
+atlas = ExtResource("2_dp2bf")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsp21"]
+atlas = ExtResource("2_dp2bf")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb02b"]
+atlas = ExtResource("2_dp2bf")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2e51"]
+atlas = ExtResource("2_dp2bf")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_se54y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys1d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsp21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb02b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2e51")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l8pv"]
+size = Vector2(10, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l41y"]
+size = Vector2(12, 4)
+
+[node name="slime" type="Node2D"]
+script = ExtResource("1_jhcl7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_se54y")
+autoplay = "default"
+frame_progress = 0.00018535774
+
+[node name="KillZone" parent="." instance=ExtResource("3_8l41y")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_0l8pv")
+
+[node name="rayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(10, 0)
+
+[node name="rayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-10, 0)
+
+[node name="rayCastDownRight" type="RayCast2D" parent="."]
+position = Vector2(6, 6)
+target_position = Vector2(0, 12)
+
+[node name="rayCastDownRight2" type="RayCast2D" parent="."]
+position = Vector2(-6, 6)
+target_position = Vector2(0, 12)
+
+[node name="EnemyKillZone" parent="." instance=ExtResource("4_dp2bf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKillZone"]
+shape = SubResource("RectangleShape2D_8l41y")
+debug_color = Color(0.9757804, 0.15746608, 0, 0.41960785)

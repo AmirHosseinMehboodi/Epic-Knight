@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhnxh6ouso3yq"]
+
+[ext_resource type="Script" uid="uid://dthmtlbs323mk" path="res://scripts/trigger_area.gd" id="1_84r8l"]
+
+[node name="TriggerZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_84r8l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

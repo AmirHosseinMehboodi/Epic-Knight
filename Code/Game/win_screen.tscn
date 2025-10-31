@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvk34gm7c0var"]
+
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="1_l2arl"]
+[ext_resource type="Script" uid="uid://r4o1vipjfypo" path="res://win_screen.gd" id="1_wmwda"]
+[ext_resource type="FontFile" uid="uid://vgm8e8gb8cpw" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="3_l5t5q"]
+[ext_resource type="AudioStream" uid="uid://bpsmp2p5ewg88" path="res://assets/brackeys_platformer_assets/sounds/You_Win.wav" id="4_1txte"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wmwda")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7607843)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_l2arl")
+theme_override_font_sizes/font_size = 32
+text = "You Won! Now go do your Deadline."
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="ColorRect/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="CongratulationsLabel" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_l5t5q")
+theme_override_font_sizes/font_size = 32
+text = "hello"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="ColorRect/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayAgainButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_l2arl")
+theme_override_font_sizes/font_size = 32
+text = "Play Again"
+
+[node name="QuitButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_l2arl")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="YouWon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1txte")
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

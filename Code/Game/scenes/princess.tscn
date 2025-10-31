@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://c055tn7e1i4vy"]
+
+[ext_resource type="Script" uid="uid://chre3domtvhsl" path="res://scripts/princess.gd" id="1_d8pdw"]
+[ext_resource type="Texture2D" uid="uid://bfenl2ibbdclg" path="res://assets/brackeys_platformer_assets/sprites/Abi0.png" id="1_rl5q2"]
+[ext_resource type="Texture2D" uid="uid://prt76qw6657q" path="res://assets/brackeys_platformer_assets/sprites/Abi1.png" id="2_d8pdw"]
+[ext_resource type="Texture2D" uid="uid://ctm6m2w1e45dr" path="res://assets/brackeys_platformer_assets/sprites/Abi2.png" id="3_juk0a"]
+[ext_resource type="Texture2D" uid="uid://nt2kyqsxsrqk" path="res://assets/brackeys_platformer_assets/sprites/Abi3.png" id="4_3mclv"]
+[ext_resource type="AudioStream" uid="uid://8nrne3pul4sp" path="res://assets/brackeys_platformer_assets/music/dizi-flute-02-72563.wav" id="6_juk0a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctn35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rl5q2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d8pdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_juk0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3mclv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="princess" type="Area2D"]
+script = ExtResource("1_d8pdw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ctn35")
+autoplay = "default"
+frame_progress = 0.39988756
+
+[node name="flute" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_juk0a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

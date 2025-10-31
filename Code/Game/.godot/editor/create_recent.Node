@@ -1,0 +1,14 @@
+AudioStreamPlayer2D
+CollisionShape2D
+AnimatedSprite2D
+Area2D
+Label
+Node2D
+Button
+MarginContainer
+VBoxContainer
+CenterContainer
+ColorRect
+Control
+Timer
+Gun
