@@ -31,6 +31,15 @@ and more
 🏆 Credits
 
 Developed by Team What's up, doc?
-Developers: Hamed Alinezhad, Mohsen Salah, Amirhossein Mehboodi
+
+Developers: 
+
+Hamed Alinezhad, 
+
+Mohsen Salah, 
+
+Amirhossein Mehboodi
+
 Engine: Godot 4.5.1
+
 Genre: Metroidvania / Platformer
