@@ -8,6 +8,8 @@ extends Control
 @onready var line_edit    : LineEdit        = center_cont.get_node(^"Panel/VBoxContainer/LineEdit")
 @onready var start_button : Button          = center_cont.get_node(^"Panel/VBoxContainer/StartButton")
 @onready var error_label  : Label           = center_cont.get_node(^"Panel/VBoxContainer/ErrorLabel")
+@onready var check_box: CheckBox = center_cont.get_node(^"Panel/VBoxContainer/CheckBox")
+@onready var canvas_layer: CanvasLayer = $"../../CanvasLayer"
 
 signal submitted(id: String)
 
@@ -52,6 +54,11 @@ func _submit() -> void:
 	get_tree().paused = false
 	hide()
 	theme1.play()
+	if check_box.button_pressed == true:
+		canvas_layer.visible = true
+	else:
+		canvas_layer.visible = false
+		
 
 func _show_error(msg: String) -> void:
 	error_label.text = msg

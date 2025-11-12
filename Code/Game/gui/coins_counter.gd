@@ -5,7 +5,9 @@ var _coins_collected: int = 0
 @export var platform_path: NodePath
 @onready var _coins_label := $Label as Label
 @onready var key_1: Area2D = $"../../key1"
+@onready var key_2: Area2D = $"../../key2"
 @onready var platform_22: AnimatableBody2D = $"../../platform22"
+@onready var coin_sound: AudioStreamPlayer2D = $"../../coin_sound"
 
 
 func _ready() -> void:
@@ -15,6 +17,7 @@ func _ready() -> void:
 
 func collect_coin() -> void:
 	_coins_collected += 1
+	coin_sound.play()
 	_coins_label.set_text(str(_coins_collected))
 	if _coins_collected == 5:
 		var tile_pos = Vector2i(-71, 0)
@@ -27,5 +30,6 @@ func collect_coin() -> void:
 		tilemap.erase_cell(1, tile_pos3)
 		key_1.visible = true
 	if _coins_collected == 15:
+		key_2.visible = true
 		var anim_player = platform_22.get_node("AnimationPlayer")
 		anim_player.play("new_animation")

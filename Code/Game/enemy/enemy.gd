@@ -72,7 +72,7 @@ func destroy() -> void:
 		
 	var enemy_count = get_tree().get_nodes_in_group("enemies").size()
 
-	if enemy_count == 3 and health <= 0:
+	if enemy_count == 1 and health <= 0:
 		var y = -31
 		for x in range(9, 29):
 			tilemap.erase_cell(1, Vector2i(x, y))
